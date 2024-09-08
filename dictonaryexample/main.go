@@ -29,7 +29,7 @@ func main() {
     }
   }
 
-  errUpdate := dictonary.Update(baseWord, "Second Word")
+  errUpdate := dictionary.Update(baseWord, "Second Word")
   if errUpdate != nil {
     fmt.Println(errUpdate)
   } else {
@@ -42,7 +42,7 @@ func main() {
     }
   }
 
-  errDelete := dictonary.Delete(baseWord)
+  errDelete := dictionary.Delete(baseWord)
   if errDeelete != nil {
     fmt.Println(errDelete)
   } else {
