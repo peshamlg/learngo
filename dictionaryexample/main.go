@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-  dictionary := mydict.Dictonary{}
+  dictionary := mydict.Dictionary{}
 
   baseWord := "hello"
   def, errSearch := dictionary.Search(baseWord)
@@ -43,7 +43,7 @@ func main() {
   }
 
   errDelete := dictionary.Delete(baseWord)
-  if errDeelete != nil {
+  if errDelete != nil {
     fmt.Println(errDelete)
   } else {
     fmt.Println("The word is deleted")
