@@ -2,7 +2,7 @@ package mydict
 
 import "errors"
 
-type Dictonary map[string]string
+type Dictionary map[string]string
 
 // Search a word
 func (d Dictonary) Search (word string) (string, error) {
