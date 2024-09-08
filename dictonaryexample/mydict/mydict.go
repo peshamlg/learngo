@@ -11,6 +11,7 @@ func (d Dictonary) Search (word string) (string, error) {
     return def, nil
   }
   return "", errors.New("The word is not found")
+}
 
 // Add a word to the dictonary
 func (d Dictonary) Add(word, def string) error {
