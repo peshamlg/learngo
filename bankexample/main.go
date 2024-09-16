@@ -2,7 +2,7 @@ package main
 
 import(
 	"fmt"
-	"github.com/peshamlg/learngo/accounts"
+	"github.com/peshamlg/learngo/bankexample/accounts"
 )
 
 func main() {

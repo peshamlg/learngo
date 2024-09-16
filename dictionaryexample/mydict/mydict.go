@@ -5,7 +5,7 @@ import "errors"
 type Dictionary map[string]string
 
 // Search a word
-func (d Dictonary) Search (word string) (string, error) {
+func (d Dictionary) Search (word string) (string, error) {
   def, exist := d[word]
   if exist {
     return def, nil
@@ -14,7 +14,7 @@ func (d Dictonary) Search (word string) (string, error) {
 }
 
 // Add a word to the dictonary
-func (d Dictonary) Add(word, def string) error {
+func (d Dictionary) Add(word, def string) error {
   _, err := d.Search(word)
   if err == nil {
     d[word] = def
@@ -25,7 +25,7 @@ func (d Dictonary) Add(word, def string) error {
 }
 
 // Update a word
-func (d Dictonary) Update(word, def string) error {
+func (d Dictionary) Update(word, def string) error {
   _, err := d.Search(word)
   if err != nil {
     d[word] = def
@@ -36,7 +36,7 @@ func (d Dictonary) Update(word, def string) error {
 }
 
 // Delete a word
-func (d Dictonary) Delete (word string) error {
+func (d Dictionary) Delete (word string) error {
   _, err := d.Search(word)
   if err != nil {
     delete(d, word)
