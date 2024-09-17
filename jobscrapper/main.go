@@ -1,9 +1,11 @@
 package main
 
 import (
+	"encoding/csv"
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -34,7 +36,34 @@ func main() {
 		totalJobs = append(totalJobs, jobs...)
 	}
 
-	fmt.Println(totalJobs)
+	writeJobs(totalJobs)
+	fmt.Println("Done")
+}
+
+func writeJobs(jobs []job) {
+	file, err := os.Create("jobs.csv")
+	checkError(err)
+
+	writer := csv.NewWriter(file)
+	defer writer.Flush()
+
+	headers := []string{"ID", "Title", "Company", "Location", "Condition", "Job Date", "Badge", "Apply URL"}
+	writer.Write(headers)
+
+	for _, job := range jobs {
+		jobSlice := []string{
+			job.id,
+			job.title,
+			job.company,
+			job.location,
+			strings.Join(job.condition, " "),
+			job.jobDate,
+			job.badge,
+			"https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=" + job.id,
+		}
+		jwErr := writer.Write(jobSlice)
+		checkError(jwErr)
+	}
 }
 
 func extractJob(card *goquery.Selection) job {
