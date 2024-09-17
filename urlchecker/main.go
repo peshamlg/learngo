@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	var results = map[string]string{}
 	urls := []string{
 		"https://www.google.com",
 		"https://www.facebook.com",
@@ -17,7 +18,15 @@ func main() {
 		"https://www.youtube.com",
 	}
 	for _, url := range urls {
-		hitURL(url)
+		result := "Success"
+		err := hitURL(url)
+		if err != nil {
+			result = "Failed"
+		}
+		results[url] = result
+	}
+	for url, result := range results {
+		fmt.Println(url, result)
 	}
 }
 
